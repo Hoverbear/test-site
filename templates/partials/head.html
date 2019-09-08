@@ -1,0 +1,61 @@
+<head>
+        <!-- Fun compatability things -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">                  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+        <!-- Information about this site -->
+        <title>{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}</title>
+        <meta name="description" content="{{ config.description }}" />
+    
+        <!-- Various Twitter related content. -->
+        {% if page.image %}
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:image" content="{{ config.base_url }}{{ page.image }}">
+        {% else %}
+            <meta name="twitter:card" content="summary">
+            <meta name="twitter:image" content="{{ config.base_url }}{{ config.extra.cover }}">
+        {% endif %}
+        <meta name="twitter:site" content="@{{ config.extra.twitter }}">
+        <meta name="twitter:creator" content="@{{ config.extra.twitter }}">
+        {% if page.title %}
+            <meta name="twitter:title" content="{{ page.title | escape }}">
+        {% else %}
+            <meta name="twitter:title" content="{{ config.base_url }}">
+        {% endif %}
+        {% if page.excerpt %}
+            <meta name="twitter:description" content="{{ page.excerpt | escape }}">
+        {% else %}
+            <meta name="twitter:description" content="{{ config.description }}">
+        {% endif %}
+    
+        <!-- Talk about the homepage and the rss feed. -->
+        <link rel="canonical" href="{{ config.base_url }}">
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml">
+    
+        <!-- Stylesheets are fun -->
+        <link rel="stylesheet" href="/font/fira_code/fira_code.css">
+        <link rel="stylesheet" href="/font/fira/fira.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
+    
+        <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+        <script defer>
+            // Create captions from Alt tags
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Array.from(document.querySelectorAll("main img")).forEach(function (item) {
+                    if (item.attributes['alt']) {
+                        var caption = document.createElement("figcaption");
+                        caption.innerHTML = item.attributes['alt'].value;
+                        item.outerHTML = "<figure>" + item.outerHTML + caption.outerHTML + "</figure>";
+                    }
+                });
+            });
+        </script>
+    </head>
+    
