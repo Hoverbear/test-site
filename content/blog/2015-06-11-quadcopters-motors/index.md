@@ -1,7 +1,6 @@
 +++
 title = "Quadcopters: Motors"
 aliases = ["2015/06/11/quadcopters-motors/"]
-math = "true"
 layout = "blog/single.html"
 [taxonomies]
 tags = [

@@ -1,9 +1,13 @@
 <footer class="post-footer">
     <div id="hero-wrapper">
         {% if page.extra.image %}
-            <img id="background" src="{{ page.extra.image }}">
+            {% set page_url_components = page.relative_path | split(pat='/') %}
+            {% set page_base = page_url_components | slice(end=page_url_components | length - 1) | join(sep='/') %}
+            {% set image_url = page_base ~ '/' ~ page.extra.image %}
+            {{ image::full(path=image_url) }}
         {% else %}
-            <img id="background" src="/{{ config.extra.cover }}">
+            {% set image_url = '../static/' ~ config.extra.cover %}
+            {{ image::full(path=image_url) }}
         {% endif %}
         <div class="content">
         <h4><a href=/>← Back to top of index</a></h4>
@@ -24,7 +28,7 @@
                 <a href="https://twitter.com/{{ config.extra.twitter }}">@{{ config.extra.twitter }}</a> on Twitter,</a>
             {% endif %}
     
-            or track via <a class="subscribe" href="/rss.xml">RSS Feed</a>.
+            or track via <a class="subscribe" href="{{ config.base_url }}/rss.xml">RSS Feed</a>.
         </p>
         </div>
     </div>

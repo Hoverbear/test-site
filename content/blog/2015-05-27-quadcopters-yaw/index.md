@@ -1,7 +1,6 @@
 +++
 title = "Quadcopters: Yaw"
 aliases = ["2015/05/27/quadcopters-yaw/"]
-math = true
 layout = "blog/single.html"
 [taxonomies]
 tags = [

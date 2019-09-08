@@ -1,6 +1,5 @@
 +++
 title = "Longest Common Increasing Sequence"
-math = "true"
 aliases = ["2014/11/15/lcis/"]
 layout = "blog/single.html"
 [taxonomies]
