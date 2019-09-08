@@ -11,10 +11,10 @@
         {% endif %}
         <div class="content">
             {% if page.title %}
-                <h1><a href="/">{{ page.title }}</a></h1>
+                <h1><a href="{{ config.base_url }}">{{ page.title }}</a></h1>
                 <p class="description">{{ page.description }}</h1>
             {% else %}
-                <h1><a href="/">{{ config.title }}</a></h1>
+                <h1><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
                 <p class="description">{{ config.description }}</p>
             {% endif %}
             <nav id="pages">
