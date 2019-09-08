@@ -15,7 +15,8 @@ jobs:
       run: zola build
     - name: Push build
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Seems the token described in https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables doesn't work
+        TOKEN: ${{ secrets.TOKEN }}
       run: |
         cd public
         git init
@@ -23,4 +24,4 @@ jobs:
         git config user.email "github-actions-bot@users.noreply.github.com"
         git add .
         git commit -s -m "Deploy ${GITHUB_SHA} to ${GITHUB_REPOSITORY}:gh-pages"
-        git push --force "https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
+        git push --force "https://${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
