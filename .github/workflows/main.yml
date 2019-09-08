@@ -11,6 +11,13 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install Zola
       run: sudo snap install --edge zola
-    - name: Build
+    - name: Build Site
+      run: zola build
+    - name: Push build
       run: |
-        zola build
+        cd public
+        git init
+        git config user.name "${GITHUB_ACTOR}"
+        git config user.email "operator@hoverbear.org"
+        git commit -m "Deploy ${GITHUB_SHA} to ${GITHUB_REPOSITORY}:$remote_branch"
+        git push --force "https://${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
