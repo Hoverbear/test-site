@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Zola
-      run: snap install --edge zola
+      run: sudo snap install --edge zola
     - name: Build
       run: |
         zola build
