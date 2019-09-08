@@ -1,7 +1,7 @@
 title = "Musings"
 description = "Musings of an open source Distributed Systems engineer working remotely in western Canada."
 default_language = "en"
-base_url = "https://hoverbear.org"
+base_url = "https://hoverbear.github.io/test-site/"
 generate_rss = true
 compile_sass = true
 highlight_code = true

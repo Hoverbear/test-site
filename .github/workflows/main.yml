@@ -22,6 +22,9 @@ jobs:
         git init
         git config user.name "GitHub Actions"
         git config user.email "github-actions-bot@users.noreply.github.com"
+        git config --global url."https://".insteadOf git://
+        git config --global url."https://github.com/".insteadOf git@github.com:
+        git submodule update --init --recursive
         git add .
         git commit -s -m "Deploy ${GITHUB_SHA} to ${GITHUB_REPOSITORY}:gh-pages"
         git push --force "https://${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
