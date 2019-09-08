@@ -19,5 +19,5 @@ jobs:
         git init
         git config user.name "${GITHUB_ACTOR}"
         git config user.email "operator@hoverbear.org"
-        git commit -m "Deploy ${GITHUB_SHA} to ${GITHUB_REPOSITORY}:$remote_branch"
+        git commit -a -s -m "Deploy ${GITHUB_SHA} to ${GITHUB_REPOSITORY}:gh-pages"
         git push --force "https://${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
