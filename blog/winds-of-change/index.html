@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Fun compatability things -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">                  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="shortcut icon" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/images/favicon.ico">
+    
+        <!-- Information about this site -->
+        <title>Winds of Change</title>
+        <meta name="description" content="Musings of an open source Distributed Systems engineer working remotely in western Canada." />
+    
+        <!-- Various Twitter related content. -->
+        
+            <meta name="twitter:card" content="summary">
+            <meta name="twitter:image" content="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/cover.jpg">
+        
+        <meta name="twitter:site" content="@a_hoverbear">
+        <meta name="twitter:creator" content="@a_hoverbear">
+        
+            <meta name="twitter:title" content="Winds of Change">
+        
+        
+            <meta name="twitter:description" content="Musings of an open source Distributed Systems engineer working remotely in western Canada.">
+        
+    
+        <!-- Talk about the homepage and the rss feed. -->
+        <link rel="canonical" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;">
+        <link rel="alternate" type="application/rss+xml" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/feed.xml">
+    
+        <!-- Stylesheets are fun -->
+        <link rel="stylesheet" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/font/fira_code/fira_code.css">
+        <link rel="stylesheet" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/font/fira/fira.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/main.css" />
+    
+        <!-- Katex -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+        <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+        <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+        <script defer>
+            // Create captions from Alt tags
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Array.from(document.querySelectorAll("main img")).forEach(function (item) {
+                    if (item.attributes['alt']) {
+                        var caption = document.createElement("figcaption");
+                        caption.innerHTML = item.attributes['alt'].value;
+                        item.outerHTML = "<figure>" + item.outerHTML + caption.outerHTML + "</figure>";
+                    }
+                });
+            });
+        </script>
+    </head>
+    
+    <body>
+        <header>
+    <div id="hero-wrapper">
+        
+            
+            
+            
+            
+  <img srcset="
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;5ee2e2190809c0f900.jpg 1280w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;349d82c9aa244d8900.jpg 1920w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;24c9d6008583578500.jpg 3840w
+              "
+        sizes="
+               (max-width: 600px) 600px,
+               (max-width: 1200px) 1200px,
+               (max-width: 1800px) 1800px,
+               3840px"
+        src="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;5ee2e2190809c0f900.jpg" />
+
+        
+        <div class="content">
+            
+                <h1><a href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;">Winds of Change</a></h1>
+                <p class="description"></h1>
+            
+            <nav id="pages">
+                <ul>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/tags/">Tags</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </header>
+      
+
+        <main>
+            <article>
+                
+    <p>Unlike most of this blog this post is not technical in the slightest, instead it's a personal update. Though, I have been wanting to write this post for a long time now!</p>
+<p>Many things have happened in the last few months, and life is still swirling all around me. Many things seemed uncertain, other things still do. Irregardless, things are pretty darn cool.</p>
+<p>Anyways, here's what's happened lately.</p>
+<p id="zola-continue-reading"><a name="continue-reading"></a></p>
+<h2 id="the-first-degree">The First Degree</h2>
+<p>I went <a href="http://camosun.ca/">Camosun College</a> in late 2010, and transfered to the <a href="http://uvic.ca/">University of Victoria</a> in 2012. As of June 2016, I've finished my program and recieved my degree!</p>
+<p>I'm now the proud holder of a <strong>Computer Science (Networking) with Distinction</strong> degree. I wasn't sure what the 'with Distinction' meant but according to <a href="http://web.uvic.ca/calendar2016-09/undergrad/info/regulations/graduation.html">this</a> it means I was in the top 20%! Wild.</p>
+<p><img src="https://hoverbear.github.io/test-site/blog/winds-of-change/degree.jpg" alt="My degree." /></p>
+<p>As the heading suggests, I plan to do more academia in the future. I'd like to work and explore a bit first. Which brings up my next topic!</p>
+<h2 id="a-change-of-location">A Change of Location</h2>
+<p>I'm moving to <strong>Berlin, Germany</strong> on August 13th! Travelling has been in my plans for years, and Europe is one of the destinations I've wanted to visit most. It's more than that though, I want to see <strong>many</strong> places and cultures, so choosing any particular one is hard!</p>
+<p>Berlin is an amazing place not only because of how interesting the city and people are, but also because of how central it is to the rest of Europe. As a Canadian, where a flight to another part of the country can be over 6 hours and a busing can take hours out of your day, the threat of a few hours on a train between countries is something I kind of look forward to.</p>
+<p>Over the last months I've had the chance to meet some amazing people in Berlin, too, as well as the surrounding areas. I can't wait to go visit my friend <a href="https://github.com/aochagavia">Adolfo</a> in Utrecht, check out the CCC, and meet all sorts of interesting people.</p>
+<p>It's been a very long adventure trying to get my visa, and it's still not over. Perhaps it is a story for another blog post. Suffice it to say, the process has been incredibly frustrating.</p>
+<p>There's more for me in Berlin too, including a job...</p>
+<h2 id="building-a-career">Building a Career</h2>
+<p>I'm very happy to announce that I'll be joining Asquera next month as a Junior Developer!</p>
+<p>Asquera is a back-end consultancy. I originally encountered them through my friend <a href="https://github.com/skade">Florian</a> and realized they might be a perfect fit for me. They work with many of the things I'm familiar with, and will introduce me to plenty new things to satisfy my appetite. It's going to be fantastic.</p>
+<p>Asquera does a considerable amount of work in the Rust, Ruby, and Elasticsearch communities. This is very important to me and I'm very excited to get involved on the other side of the planet. I'm temporarily leaving several very awesome communities here back home, and I'm sure that ebing involved there will make me feel more at home.</p>
+<p><img src="https://hoverbear.github.io/test-site/blog/winds-of-change/asquera.svg" alt="Asquera" /></p>
+<p>Over the last few weeks I've gotten to know the team a bit, and gosh are they ever cool! I can't wait to work with them. It will be a big change from where I what I currently do for work, and I'm both nervous and excited about it.</p>
+<h2 id="eyes-to-the-future">Eyes to the Future</h2>
+<p>When making choices in my life, I try to choose things that will put 'future me' in a better position. These changes are all good, and will all teach me valuable lessons.</p>
+<p>Over the next year I'll be learning about an entirely different culture, learning to learn languages, and broadening my technical abilities. I'm sure there will be many challenges ahead of me, and I'll learn much from suceeding (and occasionally failing, I'm sure) at them.</p>
+<p>It'll be a wonderful adventure.</p>
+
+
+            </article>
+        
+            
+        </main>
+        
+        <footer class="post-footer">
+    <div id="hero-wrapper">
+        
+            
+            
+            
+            
+  <img srcset="
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;5ee2e2190809c0f900.jpg 1280w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;349d82c9aa244d8900.jpg 1920w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;24c9d6008583578500.jpg 3840w
+              "
+        sizes="
+               (max-width: 600px) 600px,
+               (max-width: 1200px) 1200px,
+               (max-width: 1800px) 1800px,
+               3840px"
+        src="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;5ee2e2190809c0f900.jpg" />
+
+        
+        <div class="content">
+        <h4><a href=/>← Back to top of index</a></h4>
+    
+        <h4>By Ana Hobden</h4>
+    
+        <p>
+            Connect through
+            
+    
+            
+                <a href="https://github.com/hoverbear">@hoverbear</a> on Github,
+            
+    
+            
+                <a href="https://twitter.com/a_hoverbear">@a_hoverbear</a> on Twitter,</a>
+            
+    
+            or track via <a class="subscribe" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/rss.xml">RSS Feed</a>.
+        </p>
+        </div>
+    </div>
+</footer>
+            
+    </body>
+
+</html>

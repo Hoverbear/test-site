@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://hoverbear.github.io/test-site/sitemap.xml

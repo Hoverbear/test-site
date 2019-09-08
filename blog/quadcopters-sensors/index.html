@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Fun compatability things -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">                  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="shortcut icon" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/images/favicon.ico">
+    
+        <!-- Information about this site -->
+        <title>Quadcopters: Sensors</title>
+        <meta name="description" content="Musings of an open source Distributed Systems engineer working remotely in western Canada." />
+    
+        <!-- Various Twitter related content. -->
+        
+            <meta name="twitter:card" content="summary">
+            <meta name="twitter:image" content="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/cover.jpg">
+        
+        <meta name="twitter:site" content="@a_hoverbear">
+        <meta name="twitter:creator" content="@a_hoverbear">
+        
+            <meta name="twitter:title" content="Quadcopters: Sensors">
+        
+        
+            <meta name="twitter:description" content="Musings of an open source Distributed Systems engineer working remotely in western Canada.">
+        
+    
+        <!-- Talk about the homepage and the rss feed. -->
+        <link rel="canonical" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;">
+        <link rel="alternate" type="application/rss+xml" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/feed.xml">
+    
+        <!-- Stylesheets are fun -->
+        <link rel="stylesheet" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/font/fira_code/fira_code.css">
+        <link rel="stylesheet" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/font/fira/fira.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/main.css" />
+    
+        <!-- Katex -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+        <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+        <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+        <script defer>
+            // Create captions from Alt tags
+            document.addEventListener("DOMContentLoaded", function(event) {
+                Array.from(document.querySelectorAll("main img")).forEach(function (item) {
+                    if (item.attributes['alt']) {
+                        var caption = document.createElement("figcaption");
+                        caption.innerHTML = item.attributes['alt'].value;
+                        item.outerHTML = "<figure>" + item.outerHTML + caption.outerHTML + "</figure>";
+                    }
+                });
+            });
+        </script>
+    </head>
+    
+    <body>
+        <header>
+    <div id="hero-wrapper">
+        
+            
+            
+  <img srcset="
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;8cd0bbd95250b78400.jpg 1280w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;2851c84fd6c5141000.jpg 1920w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;168333b890d71e2900.jpg 3840w
+              "
+        sizes="
+               (max-width: 600px) 600px,
+               (max-width: 1200px) 1200px,
+               (max-width: 1800px) 1800px,
+               3840px"
+        src="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;8cd0bbd95250b78400.jpg" />
+
+        
+        <div class="content">
+            
+                <h1><a href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;">Quadcopters: Sensors</a></h1>
+                <p class="description"></h1>
+            
+            <nav id="pages">
+                <ul>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/tags/">Tags</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </header>
+      
+
+        <main>
+            <article>
+                
+    <p>Most intelligent devices existing in the physical world, a quadcopter included, take input from sensors and act on them in some way, possibly producing an output.</p>
+<p id="zola-continue-reading"><a name="continue-reading"></a></p>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/sensors_bb.jpg" alt="Digital Sensors" /></p>
+<p>Some sensors are <strong>digital</strong>, like a button or switch, and can be read via a <code>digitalRead()</code> on an Arduino, returning either <code>HIGH</code> or <code>LOW</code>.</p>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/analog_sensors.jpg" alt="Analog Sensors" /></p>
+<p>Other sensors are <strong>analog</strong> and can return anything in the range of 0-1023. These are things like potentiometers, force sensors, light sensors, and temperature sensors.</p>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/i2c_spi.jpg" alt="I2C Sensors" /></p>
+<p>Finally, some sensors use Inter-integrated Circuit (<strong>I2C</strong>) or Serial Peripheral Interface (<strong>SPI</strong>) to interface. Typically these are found on more complicated chips like gyroscopes and accelerometers. These interfaces require multiple wires and often require you to build a small <em>wrapper</em> around the interface to interact with it. If you enjoy playing with Arduinos, companies like <a href="http://adafruit.com/">Adafruit</a> almost always include libraries for their products.</p>
+<h1 id="sensors-on-a-quadcopter">Sensors on a Quadcopter</h1>
+<p>Despite their size, quadcopters are a outfitted with an array of sensors. If you check <a href="/2015/05/26/quadcopters-board/">the board</a> you'll see that there are only two sensor chips on the board, the MPU-925 and the LPS25H which handles pressure. The MPU-925 hosts a three-axis magnetometer, accelerometer, and gyroscope, together these offer 9 Degrees of Freedom (DOF). Combined with the pressure sensor this gives us 10DOF.</p>
+<blockquote>
+<p>It can be <a href="https://www.adafruit.com/products/1714">a bit pricey to source</a> integrated circuits like gyroscopes. Because of the cost we did not build Arduino labs for this part of our series, but if you'd like we'd be happy to, we just need to know!</p>
+</blockquote>
+<p>As a note, on some of the graphs below you might notice a fair amount of noise. Some of this is inherant to the sensor, other times it is because of how we're demonstrating things. We'll talk about how to negate this at the end!</p>
+<h2 id="magnetometer">Magnetometer</h2>
+<p>Magnetometers measure the magnetic field around them, allowing the device to answer questions like <em>which way is north</em>? They are, essentially, a compass. The quadcopter uses this to help determine it's orientation in space.</p>
+<p>The following video explains how one type of magnetometer, called a <em>Fluxgate Magnometer</em>, functions.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/CMBDVx3o37g?rel=0" frameborder="0" allowfullscreen></iframe>
+<p>If you have one to play with you can explore it's readings by taking a reasonably strong magnet and moving it around the sensor. Notice how when we flip over the magnet we get a negative reading?</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-TEnJt4TLkE?rel=0" frameborder="0" allowfullscreen></iframe>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/mag-2.jpg" alt="Magnetometer Readings" /></p>
+<p>Some uses of Magnetometers:</p>
+<ul>
+<li><strong>Aurora Detection</strong> - Magnetometers can give an indication of an aurora happening before light is visible.</li>
+<li><strong>Mining</strong> - These sensors can be used to detect the composition of ground.</li>
+<li><strong>Smartphones</strong> - Magnetometers play a part in how your phone tells you were you are in the world.</li>
+<li><strong>Remote Sensing</strong> - There are various surveying and imagine applications including something called <em>Magnetovision</em>. (Cool, right?)</li>
+</ul>
+<h2 id="gyroscope">Gyroscope</h2>
+<p>Gyroscopes measure the <strong>rotational acceleration</strong> of the sensor. They are commonly used in planes to determine the horizon.</p>
+<blockquote>
+<p>The gyroscope and accelerometer in a quadcopter are called a <em>Microelectromechanical systems</em> (MEMS). There are other, non-MEMS gyroscopes that are used widely as well that have some <a href="https://www.youtube.com/watch?v=TUgwaKebHTs">interesting behaivors</a>.</p>
+</blockquote>
+<p>A quick, basic video of how these work is below:</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/zwe6LEYF0j8?rel=0" frameborder="0" allowfullscreen></iframe>
+<p>Here's how we can demonstrate this sensor, along with the output:</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/vYcVIqqawoU?rel=0" frameborder="0" allowfullscreen></iframe>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/gyro-1.jpg" alt="Gyroscope Readings" /></p>
+<h2 id="accelerometer">Accelerometer</h2>
+<p>Accelerometers measure the <strong>lateral acceleration</strong> of the sensor (not rotationally). They're how your smartphone knows when it's turned around.</p>
+<p>There is a guide to <em>Piezoelectric Accelerometers</em> <a href="http://www.pcb.com/TechSupport/Tech_Accel.aspx">here</a> that we sound useful. The <em>Engineer Guy</em> also has this great video <a href="https://www.youtube.com/channel/UC2bkHVIDjXS7sgrgjFtzOXQ">(along with many more!)</a></p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/KZVgKu6v808?rel=0" frameborder="0" allowfullscreen></iframe>
+<p>Here's how we can demonstrate this sensor, along with the output:</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6aI5Q7sSGGg?rel=0" frameborder="0" allowfullscreen></iframe>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/accel-1.jpg" alt="Accelerometer Readings" /></p>
+<p>Some uses of Accelerometers:</p>
+<ul>
+<li><strong>Activity Monitors</strong> - Like step counters and skipping counters!</li>
+<li><strong>Vechicle Safety</strong> - Accelerometers can detect sudden stops, like vechicle crashes.</li>
+<li><strong>Earthquake Detection</strong> - Earthquakes create lots of shifting which an accelerometer can detect and measure.</li>
+<li><strong>Volcanology</strong> - Modern accelerometers can be used to detect the flows of magma.</li>
+<li><strong>Computer Inputs</strong> - Some new user interface solutions utilize acceleromters to capture input.</li>
+</ul>
+<blockquote>
+<p>Why not velocity? Fun fact: It's impossible to determine if you experiencing a velocity in any direction without a frame of reference. It's much easier to collect acceleration and use mathematics (like something called integration) to determine velocity at a given time. How do we do this?</p>
+</blockquote>
+<p>Imagine that our accelerometer takes measurements every 1 second, and we have 4 readings <code>[1, 2, -2, -1]</code> in centimeters starting from rest. What is the quadcopter doing at the end? How far did it travel? (We'll use basic math here! If you know calculus this is a <strong>perfect</strong> chance to explain the basics to your cohort.)</p>
+<ul>
+<li>The first second, we have an acceleration of \(1\frac{cm}{s^2}\). We therefore have a velocity of \(1\frac{cm}{s}\). We've travelled 1 cm.</li>
+<li>The second second, we have an acceleration of \(2\frac{cm}{s^2}\). We therefore have a velocity of \(3\frac{cm}{s}\). We've travelled 3 cm.</li>
+<li>The third second, we have an acceleration of \(-2\frac{cm}{s^2}\). We therefore have a velocity of \(1\frac{cm}{s}\). We've travelled 4 cm.</li>
+<li>The fourth second, we have an acceleration of \(-1\frac{cm}{s^2}\). We therefore have a velocity of \(0\frac{cm}{s}\). We've travelled 4 cm.</li>
+</ul>
+<p>You can apply the same analysis to gyroscopes.</p>
+<h2 id="pressure-sensor">Pressure Sensor</h2>
+<p>Pressure Sensors measure the <strong>air pressure</strong> around the device. The utility of this on a quadcopter may not be obvious at first.</p>
+<blockquote>
+<p>Please, consider the following: The higher you travel in the air, the lower the air pressure becomes.</p>
+</blockquote>
+<p>Therefore if the quadcopter has a reference to the air pressure of where it took off from it is able to understand roughly how high it is relative to that point.</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/mJjuXnLn3jQ?rel=0" frameborder="0" allowfullscreen></iframe>
+<p>These readings are a bit noisy, sorry.</p>
+<p><img src="https://hoverbear.github.io/test-site/blog/quadcopters-sensors/baro.jpg" alt="Pressure Readings" /></p>
+<h2 id="sensor-fusion">Sensor Fusion</h2>
+<p>One interesting technique to improve the sensor readings is to do something called <strong>sensor fusion</strong> which combines data from disparate sources to help refine measurements. Sensor fusion is a huge benefit to compact or low power systems which often suffer from higher inaccuracies.</p>
+<p>One example of sensor fusion which you may have experienced before is <em>stereoscopic vision</em>, when we can use two slightly offset 2D cameras to produce a 3D-looking image.</p>
+<p>In our quadcopter the gyroscope, accelerometer, and magnetometer are fused together to improve <em>reduce uncertainty</em>. What exactly does this mean?</p>
+<p>When we're measuring a sensor and trying to extract data from it sometimes the input we recieve has <em>variance</em>, like our Barometer readings above. If we combine this data, say with our accelerometer's Z (up-down) axis, we can have a more refined picture of the quadcopter's position, velocity, and acceleration in space instead of just relying on the barometer.</p>
+<p>These calculations usually work somewhat similar to this:</p>
+<p>\[Result = \frac{(Variance_{Baro}^{-2}*Reading_{Baro}) +
+(Variance_{Accel Z}^{-2}*Reading_{Accel Z})}{(Variance_{Baro}^{-2} + Variance_{Accel Z}^{-2})}\]</p>
+<p>This is called a <em>linear combination</em> of the two measurements, weighted by their variances.</p>
+<blockquote>
+<p>Special thanks to my helper, Laura, for assisting me with capturing stable videography.</p>
+</blockquote>
+
+
+            </article>
+        
+            
+        </main>
+        
+        <footer class="post-footer">
+    <div id="hero-wrapper">
+        
+            
+            
+  <img srcset="
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;8cd0bbd95250b78400.jpg 1280w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;2851c84fd6c5141000.jpg 1920w,
+              https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;168333b890d71e2900.jpg 3840w
+              "
+        sizes="
+               (max-width: 600px) 600px,
+               (max-width: 1200px) 1200px,
+               (max-width: 1800px) 1800px,
+               3840px"
+        src="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;processed_images&#x2F;8cd0bbd95250b78400.jpg" />
+
+        
+        <div class="content">
+        <h4><a href=/>← Back to top of index</a></h4>
+    
+        <h4>By Ana Hobden</h4>
+    
+        <p>
+            Connect through
+            
+    
+            
+                <a href="https://github.com/hoverbear">@hoverbear</a> on Github,
+            
+    
+            
+                <a href="https://twitter.com/a_hoverbear">@a_hoverbear</a> on Twitter,</a>
+            
+    
+            or track via <a class="subscribe" href="https:&#x2F;&#x2F;hoverbear.github.io&#x2F;test-site&#x2F;/rss.xml">RSS Feed</a>.
+        </p>
+        </div>
+    </div>
+</footer>
+            
+    </body>
+
+</html>
